@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d0f0f4;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
