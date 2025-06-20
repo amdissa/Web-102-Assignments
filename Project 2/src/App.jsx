@@ -1,8 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
-
 import { useState } from 'react';
 import Flashcard from './components/Flashcard';
 import './App.css';
@@ -13,43 +8,65 @@ function App() {
     { front: "What’s 2 + 2?", back: "4" },
     { front: "React is a ___ library.", back: "JavaScript" },
     { front: "What’s the boiling point of water?", back: "100°C" },
-    { front: "Who painted the Mona Lisa?", back: "Leonardo da Vinci" }
+    { front: "Who painted the Mona Lisa?", back: "Leonardo da Vinci" },
+    { front: "What is the smallest prime number?", back: "2" },
+    { front: "Which planet is closest to the sun?", back: "Mercury" },
+    { front: "Who wrote 'Romeo and Juliet'?", back: "William Shakespeare" },
+    { front: "How many continents are there?", back: "7" },
+    { front: "Which gas do plants use during photosynthesis?", back: "Carbon Dioxide" },
+    { front: "What’s the hardest natural substance?", back: "Diamond" },
+    { front: "Which ocean is the largest?", back: "Pacific Ocean" },
+    { front: "What is the longest river in the world?", back: "Nile" },
+    { front: "In what year did the Titanic sink?", back: "1912" },
+    { front: "Which element has the symbol 'O'?", back: "Oxygen" },
+    { front: "What’s the square root of 64?", back: "8" },
+    { front: "What is the capital of Japan?", back: "Tokyo" },
+    { front: "Which mammal lays eggs?", back: "Platypus" },
+    { front: "What does DNA stand for?", back: "Deoxyribonucleic Acid" },
+    { front: "Who is known as the father of computers?", back: "Charles Babbage" },
+    { front: "What is the currency of the United Kingdom?", back: "Pound Sterling" },
+    { front: "Which country has the most population?", back: "China" },
+    { front: "Which planet has rings?", back: "Saturn" },
+    { front: "What’s the fastest land animal?", back: "Cheetah" },
+    { front: "What’s the chemical formula for water?", back: "H₂O" }
   ];
 
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
   const showRandomCard = () => {
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * flashcards.length);
-    } while (randomIndex === index); // avoid repeating the same card
+  let randomIndex;
 
-    setIndex(randomIndex);
-    setFlipped(false);
-  };
+  // Keep choosing until a different card is selected
+  do {
+    randomIndex = Math.floor(Math.random() * flashcards.length);
+  } while (randomIndex === index);
+
+  setIndex(randomIndex);
+  setFlipped(false); // Always show the front when switching
+};
+
 
   return (
     <div className="App">
-      <h1>🧠 Flashcard Quiz</h1>
-      <p className="description">Test your knowledge with quick flashcards!</p>
-      <p className="count">Total Cards: {flashcards.length}</p>
+      <main className="content">
+        <h1>🧠 Trivia 101 </h1>
+        <p className="description">Test your knowledge with quick trivia flashcards!</p>
+        <p className="count">Total Cards: {flashcards.length}</p>
 
-      <Flashcard
-        card={flashcards[index]}
-        flipped={flipped}
-        onFlip={() => setFlipped(!flipped)}
-      />
+        <Flashcard
+          card={flashcards[index]}
+          flipped={flipped}
+          onFlip={() => setFlipped(!flipped)}
+        />
 
-      <button onClick={showRandomCard}>Next Card</button>
+        <button onClick={showRandomCard}>Next Question</button>
+      </main>
     </div>
   );
 }
 
 export default App;
-
-
-
 
 // function App() {
 //   const [count, setCount] = useState(0)
