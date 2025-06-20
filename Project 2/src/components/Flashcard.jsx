@@ -5,10 +5,24 @@ export default function Flashcard({ card, flipped, onFlip }) {
     <div className={`card-container ${flipped ? 'flipped' : ''}`} onClick={onFlip}>
       <div className="card-inner">
         <div className="card-face card-front">
-          <p>{card.front}</p>
+          <div>
+            <p>{card.front}</p>
+            {card.image && (
+              <div className="image-box">
+                <img src={card.image} alt="Flashcard visual" />
+              </div>
+            )}
+          </div>
         </div>
         <div className="card-face card-back">
-          <p>{card.back}</p>
+          <div>
+            <p>{card.back}</p>
+            {card.image && (
+              <div className="image-box">
+                <img src={card.image} alt="Flashcard visual" />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

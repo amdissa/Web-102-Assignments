@@ -2,7 +2,7 @@
 
 Submitted by: **Amdissa / Nazrin Mammadsoy**
 
-This web app: **insert description**
+This web app: **Quick Trivia Flashcards with images to test your knowledge**
 
 Time spent: **4** hours spent in total
 
@@ -26,8 +26,8 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Cards contain images in addition to or in place of text
-  - [ ] Some or all cards have images in place of or in addition to text
+- [✔] Cards contain images in addition to or in place of text
+  - [✔] Some or all cards have images in place of or in addition to text
 - [ ] Cards have different visual styles such as color based on their category
   - Example categories you can use:
     - Difficulty: Easy/medium/hard
