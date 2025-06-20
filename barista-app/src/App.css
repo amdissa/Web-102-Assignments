@@ -1,13 +1,14 @@
 .title-container {
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Stack title + subtitle vertically */
+  align-items: center;     /* Center horizontally */
+  justify-content: center; /* Center vertically */
   text-align: center;
   margin-top: 30px;
-  align-items: center;
-  justify-content: center;
+  gap: 0.5rem; /* Add space between title and subtitle */
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
-  align-items: center;
-  justify-content: center;
 }
