@@ -32,20 +32,21 @@ The following **optional** features are implemented:
   - The current counter increments when a user guesses an answer correctly
   - The current counter resets to 0 when a user guesses an answer incorrectly
   - A separate counter tracks the longest streak, updating if the value of the current streak counter exceeds the value of the longest streak counter 
-- [ ] A user can mark a card that they have mastered and have it removed from the pool of displayed cards
+- [✔] A user can mark a card that they have mastered and have it removed from the pool of displayed cards
   - The user can mark a card to indicate that it has been mastered
   - Mastered cards are removed from the pool of displayed cards and added to a list of mastered cards
 
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [] List anything else that you added to improve the site's functionality!
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
 
-<img src='https://github.com/amdissa/Codepath-Assignments/blob/main/Project%202/src/project_2_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/amdissa/Codepath-Assignments/blob/main/Project%203/src/project_3_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with LiceCap  
 
@@ -57,6 +58,7 @@ GIF created with LiceCap
 ## Notes
 
 Describe any challenges encountered while building the app.
+        - It was challenging to figure out how to center the flashcards in the middle of the screen
 
 ## License
 
