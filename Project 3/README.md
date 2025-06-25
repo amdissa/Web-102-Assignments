@@ -2,7 +2,7 @@
 
 Submitted by: **Amdissa / Nazrin Mammadsoy**
 
-This web app: **insert description**
+This web app: **Displays Science flashcards to test your knowledge. K-12 friendly questions for you to try out your knowledge!**
 
 Time spent: **2** hours spent in total
 
