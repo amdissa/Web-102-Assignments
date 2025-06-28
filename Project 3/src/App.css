@@ -16,6 +16,9 @@ html, body, #root {
   padding: 2rem;
 }
 
+/***
+***/
+
 .center-content {
   display: flex;
   flex-direction: column;

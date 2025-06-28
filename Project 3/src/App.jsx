@@ -17,6 +17,9 @@ function App() {
     { front: "What is the largest planet in our solar system?", back: "Jupiter" }
   ];
 
+  /***
+***/
+
   const [shuffledCards, setShuffledCards] = useState(originalFlashcards);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
