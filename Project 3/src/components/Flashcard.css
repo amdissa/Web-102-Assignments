@@ -9,6 +9,12 @@
   justify-content: center;
 }
 
+/***
+
+Card container card is helping with everything that goes inside the flashcard
+
+***/
+
 .card-inner {
   position: relative;
   width: 100%;
