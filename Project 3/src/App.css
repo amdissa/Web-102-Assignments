@@ -31,12 +31,27 @@ These are more general
   max-width: 600px;
 }
 
+
+/***
+
+I was hoping this would center all content to the middle but it didn't quite work so
+Need to come back and edit more
+
+***/
+
 .guess-section {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+
+/***
+
+this controls the css for the guess box for the user input
+
+***/
 
 .guess-section input {
   margin: 0.5rem;
