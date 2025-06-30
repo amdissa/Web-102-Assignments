@@ -24,9 +24,21 @@ Card container card is helping with everything that goes inside the flashcard
   transform-style: preserve-3d;
 }
 
+/***
+
+Card inner one is helping with everything that goes inside the flashcard
+
+***/
+
 .card-container.flipped .card-inner {
   transform: rotateY(180deg);
 }
+
+/***
+
+controls the card flip transition 
+
+***/
 
 .card-face {
   position: absolute;
