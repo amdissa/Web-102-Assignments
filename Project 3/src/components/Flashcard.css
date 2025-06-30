@@ -59,8 +59,20 @@ controls the card flip transition
   color: white;
 }
 
+/***
+
+card front
+***/
+
+
 .card-back {
   background-color: #2196F3;
   color: white;
   transform: rotateY(180deg);
 }
+
+/***
+
+controls back of the flashcard
+
+***/
