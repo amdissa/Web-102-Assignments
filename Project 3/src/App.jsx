@@ -153,4 +153,8 @@ function App() {
   );
 }
 
+  /***
+   * Here we are putting it all together
+  ***/
+
 export default App;
