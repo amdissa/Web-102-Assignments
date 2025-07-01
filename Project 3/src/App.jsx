@@ -18,6 +18,8 @@ function App() {
   ];
 
   /***
+   * This is the main file
+   * Below are constants I will need
 ***/
 
   const [shuffledCards, setShuffledCards] = useState(originalFlashcards);
