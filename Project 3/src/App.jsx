@@ -82,6 +82,10 @@ function App() {
     setGuess('');
   };
 
+  /***
+   * This is a shuffleCards function that helps us shuffle the flashcards in a random order
+  ***/
+
   const markAsMastered = () => {
     const updatedShuffled = [...shuffledCards];
     const removedCard = updatedShuffled.splice(index, 1)[0];
@@ -100,6 +104,10 @@ function App() {
     setGuess('');
     setFeedback('');
   };
+  
+  /***
+   * Once the user has mastered the flashcard they can take it out of the deck
+  ***/
 
   return (
     <div className="App">
