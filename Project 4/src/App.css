@@ -1,0 +1,54 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+b.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.cat-card {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 300px;
+}
+
+.cat-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.clickable {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ban-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 100px;
+  height: auto;
+  margin: 5px;
+}
+.clickable {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.clickable:hover {
+  color: #0056b3;
+}
