@@ -4,10 +4,29 @@
   padding: 2rem;
   text-align: center;
 }
+
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f4f6fa;
+  padding: 1.5rem;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
 .dashboard {
   font-family: Arial, sans-serif;
-  padding: 20px;
-  margin-left: 15%;
+  padding: 20px; /* ← fixed */
 }
 
 .summary {
@@ -36,5 +55,5 @@ input, select {
 .weather-item {
   margin-bottom: 15px;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #0ea133; 
 }
