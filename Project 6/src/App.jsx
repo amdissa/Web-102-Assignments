@@ -1,8 +1,11 @@
+// src/App.jsx
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import CityDetail from "./CityDetail";
 import Sidebar from "./Sidebar";
+import About from "./About";
+import SearchPage from "./SearchPage";
 import "./App.css";
 
 // Register ChartJS components
@@ -107,90 +110,77 @@ function App() {
     .length;
   const uniqueConditions = new Set(weatherData.map((w) => w.condition)).size;
 
-return (
-  <div className="app">
-    <Sidebar />
-
-    <div className="main-content">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="dashboard">
-              <h1>Weather Dashboard</h1>
-
-              <div className="summary">
-                <div>Average Temp: {avgTemp}&#8451;</div>
-                <div>Rainy Cities: {rainyCount}</div>
-                <div>Unique Conditions: {uniqueConditions}</div>
-              </div>
-
-              <div className="filters">
-                <input
-                  type="text"
-                  placeholder="Search city..."
-                  value={searchInput}
-                  onChange={(e) => {
-                    setSearchInput(e.target.value);
-                    setFilterTerm(e.target.value);
-                  }}
-                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                />
-                <button onClick={handleSearch}>Search</button>
-
-                <select
-                  value={filterCondition}
-                  onChange={(e) => setFilterCondition(e.target.value)}
-                >
-                  <option value="All">All Conditions</option>
-                  {Array.from(new Set(weatherData.map((w) => w.condition))).map((cond) => (
-                    <option key={cond} value={cond}>
-                      {cond}
-                    </option>
+  return (
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="dashboard">
+                <h1>Weather Dashboard</h1>
+                <div className="summary">
+                  <div>Average Temp: {avgTemp}&#8451;</div>
+                  <div>Rainy Cities: {rainyCount}</div>
+                  <div>Unique Conditions: {uniqueConditions}</div>
+                </div>
+                <div className="filters">
+                  <input
+                    type="text"
+                    placeholder="Search city..."
+                    value={searchInput}
+                    onChange={(e) => {
+                      setSearchInput(e.target.value);
+                      setFilterTerm(e.target.value);
+                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                  />
+                  <button onClick={handleSearch}>Search</button>
+                  <select value={filterCondition} onChange={(e) => setFilterCondition(e.target.value)}>
+                    <option value="All">All Conditions</option>
+                    {Array.from(new Set(weatherData.map((w) => w.condition))).map((cond) => (
+                      <option key={cond} value={cond}>{cond}</option>
+                    ))}
+                  </select>
+                </div>
+                <ul className="weather-list">
+                  {filtered.map((w, i) => (
+                    <li
+                      key={i}
+                      className="weather-item"
+                      onClick={() => navigate(`/city/${w.city}`)}
+                    >
+                      <strong>{w.city}, {w.country}</strong><br />
+                      {w.condition}, {w.temp_c}&#8451;
+                    </li>
                   ))}
-                </select>
+                </ul>
+                <div className="charts">
+                  <Line
+                    data={{
+                      labels: weatherData.map((w) => w.city),
+                      datasets: [
+                        {
+                          label: "Temperature (°C)",
+                          data: weatherData.map((w) => w.temp_c),
+                          fill: false,
+                          borderColor: "blue",
+                        },
+                      ],
+                    }}
+                  />
+                </div>
               </div>
-
-              <ul className="weather-list">
-                {filtered.map((w, i) => (
-                  <li
-                    key={i}
-                    className="weather-item"
-                    onClick={() => navigate(`/city/${w.city}`)}
-                  >
-                    <strong>
-                      {w.city}, {w.country}
-                    </strong>
-                    <br />
-                    {w.condition}, {w.temp_c}&#8451;
-                  </li>
-                ))}
-              </ul>
-
-              <div className="charts">
-                <Line
-                  data={{
-                    labels: weatherData.map((w) => w.city),
-                    datasets: [
-                      {
-                        label: "Temperature (°C)",
-                        data: weatherData.map((w) => w.temp_c),
-                        fill: false,
-                        borderColor: "blue",
-                      },
-                    ],
-                  }}
-                />
-              </div>
-            </div>
-          }
-        />
-        <Route path="/city/:city" element={<CityDetail weatherData={weatherData} />} />
-      </Routes>
+            }
+          />
+          <Route path="/city/:city" element={<CityDetail weatherData={weatherData} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/search" element={<SearchPage />} />
+        </Routes>
+      </div>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default App;
