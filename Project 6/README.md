@@ -66,6 +66,8 @@ GIF created with LiceCap
 
 Describe any challenges encountered while building the app.
 
+Spacing definitely is still tricky to deal with for me. I'm slowly getting used to using React Router.
+
 ## License
 
     Copyright [2025] [Amdissa / Nazrin Mammadsoy]
