@@ -53,7 +53,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/amdissa/Web-102-Assignments/blob/main/Project%206/project_6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/amdissa/Web-102-Assignments/blob/main/Project%206/walkthrough_project_6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with LiceCap  
