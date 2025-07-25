@@ -229,7 +229,16 @@ function App() {
           />
           <Route path="/city/:city" element={<CityDetail weatherData={weatherData} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/search" element={<SearchPage weatherData={weatherData} fetchCityWeather={fetchCityWeather} />} />
+          <Route
+            path="/search"
+            element={
+              <SearchPage
+                weatherData={weatherData}
+                fetchCityWeather={fetchCityWeather}
+                setWeatherData={setWeatherData} // ✅ ADD THIS
+              />
+            }
+          />
         </Routes>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-function SearchPage({ fetchCityWeather, weatherData, setWeatherData }) {
+function SearchPage({ weatherData, fetchCityWeather, setWeatherData }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState(null);
+  
 
   const handleSearch = async () => {
     if (!searchInput) return;
@@ -25,12 +26,13 @@ function SearchPage({ fetchCityWeather, weatherData, setWeatherData }) {
       <div className="filters">
         <input
           type="text"
-          placeholder="Enter city name..."
+          placeholder="Search for a city..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
         <button onClick={handleSearch}>Search</button>
+
       </div>
 
       {searchResult ? (
