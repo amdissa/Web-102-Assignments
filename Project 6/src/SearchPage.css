@@ -1,0 +1,14 @@
+.search-page {
+  padding: 2rem;
+}
+
+.search-page input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-page button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
