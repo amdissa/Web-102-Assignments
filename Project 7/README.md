@@ -1,6 +1,6 @@
 # Web Development Project 7 - *Crewmate Generator*
 
-Submitted by: **Amdissa / Nazrin Mammadsoy**
+Submitted by: **Amdissa / Nazrin R Mammadsoy**
 
 This web app: **This is a crewmate generator app where you can pick a name, role, color, and task for your crewmate. Please customize your crewmates and head to Crewmate Gallery to see all of your crewmates**
 
@@ -43,20 +43,19 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
-
+* [✔] List anything else that you added to improve the site's functionality!
+  - [✔] Category based role where users choose their category/role (Medic, Engineer, Pilot, etc.) which determines their task combination
+  - [✔] Navigation bar that has a clean look and links attached to different pages like Home, Gallery, and Create
+  - [✔] 
+  - [✔] 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/amdissa/Web-102-Assignments/blob/main/Project%207/project_7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+GIF created with LiceCap  
+
 
 ## Notes
 
@@ -64,7 +63,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2025] [Amdissa / Nazrin R Mammadsoy]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
