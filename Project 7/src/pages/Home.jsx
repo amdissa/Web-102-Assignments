@@ -15,18 +15,30 @@ function Home() {
   }, []);
 
   const calculateStats = () => {
-    const total = crewmates.length;
-    const redCount = crewmates.filter(c => c.color === 'Red').length;
-    const redPercent = total ? Math.round((redCount / total) * 100) : 0;
-    return { total, redPercent };
-  };
+  const total = crewmates.length;
+  const colorCounts = crewmates.reduce((acc, c) => {
+    acc[c.color] = (acc[c.color] || 0) + 1;
+    return acc;
+  }, {});
 
-  const { total, redPercent } = calculateStats();
+  const percentages = Object.entries(colorCounts).map(([color, count]) => ({
+    color,
+    percent: total ? Math.round((count / total) * 100) : 0
+  }));
+
+  return { total, percentages };
+};
+
+
+const { total, percentages } = calculateStats();
 
   return (
     <div  className="App">
       <h1>Crewmate Gallery</h1>
-      <p>Total Crew: {total} | Red: {redPercent}%</p>
+      <p>Total Crew: {total} | {
+        percentages.map(({ color, percent }) => `${color}: ${percent}%`).join(' | ')
+      }</p>
+
       <Link to="/create">+ Add Crewmate</Link>
       <div className="gallery">
         {crewmates.map((c) => (
