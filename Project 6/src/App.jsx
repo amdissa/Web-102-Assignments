@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import CityDetail from "./CityDetail";
 import Sidebar from "./Sidebar";
+import About from "./About";
+import SearchPage from "./SearchPage";
 import "./App.css";
 
-// Register ChartJS components
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -57,7 +59,14 @@ function App() {
         condition: weather.weather.description,
         temp_c: weather.temp,
         humidity: weather.rh,
+        wind_spd: weather.wind_spd,
+        clouds: weather.clouds, // or however you're storing this
+        sunrise: weather.sunrise,
+        sunset: weather.sunset,
+        airqualityindex: weather.aqi,
+        visibility: weather.vis
       };
+
     } catch (err) {
       console.error("Weather fetch error:", err);
       return null;
@@ -107,90 +116,133 @@ function App() {
     .length;
   const uniqueConditions = new Set(weatherData.map((w) => w.condition)).size;
 
-return (
-  <div className="app">
-    <Sidebar />
+  const [showCharts, setShowCharts] = useState(true);
 
-    <div className="main-content">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="dashboard">
-              <h1>Weather Dashboard</h1>
 
-              <div className="summary">
-                <div>Average Temp: {avgTemp}&#8451;</div>
-                <div>Rainy Cities: {rainyCount}</div>
-                <div>Unique Conditions: {uniqueConditions}</div>
+  return (
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="dashboard">
+                <h1>Weather Dashboard</h1>
+                <div className="summary">
+                  <div>Average Temp: {avgTemp}&#8451;</div>
+                  <div>Rainy Cities: {rainyCount}</div>
+                  <div>Unique Conditions: {uniqueConditions}</div>
+                  <button onClick={() => setShowCharts(!showCharts)}>
+                    {showCharts ? "Hide Charts" : "Show Charts"}
+                  </button>
+
+                </div>
+                <div className="filters">
+                  <input
+                    type="text"
+                    placeholder="Search city..."
+                    value={searchInput}
+                    onChange={(e) => {
+                      setSearchInput(e.target.value);
+                      setFilterTerm(e.target.value);
+                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                  />
+                  <button onClick={handleSearch}>Search</button>
+                  <select value={filterCondition} onChange={(e) => setFilterCondition(e.target.value)}>
+                    <option value="All">All Conditions</option>
+                    {Array.from(new Set(weatherData.map((w) => w.condition))).map((cond) => (
+                      <option key={cond} value={cond}>{cond}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="dashboard-grid">
+                  <div className="weather-list">
+                    {filtered.map((w, i) => (
+                      <div key={i} className="city-block">
+                        <div className="city-info">
+                          <strong>{w.city}, {w.country}</strong><br />
+                          {w.condition}, {w.temp_c}&#8451;<br />
+                          Cloud Coverage: {w.clouds !== undefined ? `${w.clouds}%` : "N/A"}<br />
+                          <button onClick={() => navigate(`/city/${w.city}`)}>Details</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                {showCharts && (
+                  <div className="charts">
+                    {/* Temperature Chart */}
+                    <Line
+                      data={{
+                        labels: weatherData.map((w) => w.city),
+                        datasets: [
+                          {
+                            label: "Temperature (°C)",
+                            data: weatherData.map((w) => w.temp_c),
+                            fill: false,
+                            borderColor: "blue",
+                            tension: 0.4,
+                          },
+                        ],
+                      }}
+                      options={{
+                        responsive: true,
+                        plugins: {
+                          legend: {
+                            position: "top",
+                          },
+                          title: {
+                            display: true,
+                            text: "Temperature by City",
+                          },
+                        },
+                      }}
+                    />
+
+                    {/* Wind Speed Chart */}
+                    <Bar
+                      data={{
+                        labels: weatherData.map((w) => w.city),
+                        datasets: [
+                          {
+                            label: "Wind Speed (m/s)",
+                            data: weatherData.map((w) => w.wind_spd),
+                            backgroundColor: "lightgreen",
+                          },
+                        ],
+                      }}
+                      options={{
+                        responsive: true,
+                        plugins: {
+                          legend: { display: true },
+                          title: { display: true, text: "Wind Speed by City" },
+                        },
+                      }}
+                    />
+                  </div>
+                )}
+                </div>
               </div>
-
-              <div className="filters">
-                <input
-                  type="text"
-                  placeholder="Search city..."
-                  value={searchInput}
-                  onChange={(e) => {
-                    setSearchInput(e.target.value);
-                    setFilterTerm(e.target.value);
-                  }}
-                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                />
-                <button onClick={handleSearch}>Search</button>
-
-                <select
-                  value={filterCondition}
-                  onChange={(e) => setFilterCondition(e.target.value)}
-                >
-                  <option value="All">All Conditions</option>
-                  {Array.from(new Set(weatherData.map((w) => w.condition))).map((cond) => (
-                    <option key={cond} value={cond}>
-                      {cond}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <ul className="weather-list">
-                {filtered.map((w, i) => (
-                  <li
-                    key={i}
-                    className="weather-item"
-                    onClick={() => navigate(`/city/${w.city}`)}
-                  >
-                    <strong>
-                      {w.city}, {w.country}
-                    </strong>
-                    <br />
-                    {w.condition}, {w.temp_c}&#8451;
-                  </li>
-                ))}
-              </ul>
-
-              <div className="charts">
-                <Line
-                  data={{
-                    labels: weatherData.map((w) => w.city),
-                    datasets: [
-                      {
-                        label: "Temperature (°C)",
-                        data: weatherData.map((w) => w.temp_c),
-                        fill: false,
-                        borderColor: "blue",
-                      },
-                    ],
-                  }}
-                />
-              </div>
-            </div>
-          }
-        />
-        <Route path="/city/:city" element={<CityDetail weatherData={weatherData} />} />
-      </Routes>
+            }
+          />
+          <Route path="/city/:city" element={<CityDetail weatherData={weatherData} />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/search"
+            element={
+              <SearchPage
+                weatherData={weatherData}
+                fetchCityWeather={fetchCityWeather}
+                setWeatherData={setWeatherData} // ✅ ADD THIS
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default App;
