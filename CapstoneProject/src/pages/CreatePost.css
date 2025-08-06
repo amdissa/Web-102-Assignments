@@ -1,0 +1,43 @@
+.create-post-container {
+  background-color: #e6f7e6; /* light green */
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.create-post-container h1 {
+  color: #2d572c;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.create-post-container form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-container input,
+.create-post-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-post-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-post-container button:hover {
+  background-color: #45a049;
+}
