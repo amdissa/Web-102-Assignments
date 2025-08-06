@@ -1,22 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";
-import "./Home.css"; // Optional CSS
+import "./Home.css";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [sortBy, setSortBy] = useState("created_at");
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchPosts();
   }, [sortBy, search]);
 
   async function fetchPosts() {
+    setLoading(true);
     let query = supabase
       .from("posts")
       .select("*")
-      .order(sortBy, { ascending: sortBy === "created_at" ? false : true });
+      .order(sortBy, { ascending: sortBy !== "created_at" });
 
     if (search) {
       query = query.ilike("title", `%${search}%`);
@@ -24,11 +26,29 @@ export default function Home() {
 
     const { data, error } = await query;
     if (!error) setPosts(data);
+    setLoading(false);
+  }
+
+  async function upvotePost(id, currentUpvotes) {
+    const { error } = await supabase
+      .from("posts")
+      .update({ upvotes: currentUpvotes + 1 })
+      .eq("id", id);
+
+    if (!error) {
+      // Update the local state instantly
+      setPosts((prev) =>
+        prev.map((p) =>
+          p.id === id ? { ...p, upvotes: (p.upvotes || 0) + 1 } : p
+        )
+      );
+    }
   }
 
   return (
     <div className="home-container">
       <h1>Beauty & Fashion Lookbook</h1>
+
       <div className="controls">
         <input
           type="text"
@@ -38,30 +58,46 @@ export default function Home() {
         />
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="created_at">Newest</option>
-          <option value="title">Title</option>
+          <option value="upvotes">Most Upvotes</option>
+          <option value="title">Title (A–Z)</option>
         </select>
         <Link to="/create" className="new-post-btn">+ New Post</Link>
       </div>
 
-      <div className="post-list">
-        {posts.length > 0 ? (
-          posts.map((post) => (
+      {loading ? (
+        <p>Loading...</p>
+      ) : posts.length > 0 ? (
+        <div className="post-list">
+          {posts.map((post) => (
             <div key={post.id} className="post-card">
-              <h3>{post.title}</h3>
-              <p>{post.content}</p>
+              <Link to={`/post/${post.id}`} className="post-link">
+                <h3>{post.title}</h3>
+              </Link>
               {post.image_url && (
-                <img 
-                  src={post.image_url} 
-                  alt={post.title} 
-                  style={{ maxWidth: "100%", height: "auto", marginTop: "10px" }} 
+                <img
+                  src={post.image_url}
+                  alt={post.title}
+                  style={{
+                    maxWidth: "200px",
+                    maxHeight: "300px",
+                    objectFit: "cover",
+                    // display: "block",
+                    marginTop: "10px",
+                    borderRadius: "8px"
+                  }}
                 />
               )}
+              <p>Created: {new Date(post.created_at).toLocaleString()}</p>
+              <p>Upvotes: {post.upvotes || 0}</p>
+              <button onClick={() => upvotePost(post.id, post.upvotes || 0)}>
+                Upvote
+              </button>
             </div>
-          ))
-        ) : (
-          <p>No posts found.</p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p>No posts found.</p>
+      )}
     </div>
   );
 }

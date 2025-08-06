@@ -100,3 +100,48 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
+/* COMMENTS SECTION */
+.comments-section {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.comment {
+  display: block;
+  margin: 8px 0;
+  padding: 6px 10px;
+  background-color: #f1f8f2;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+}
+
+.no-comments {
+  color: #777;
+  font-style: italic;
+}
+
+.comment-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #a5d6a7;
+  border-radius: 6px;
+}
+
+.comment-form button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #2e7d32;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #1b5e20;
+}

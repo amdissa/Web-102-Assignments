@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../client';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const colors = ['Red', 'Blue', 'Green', 'Yellow'];
+const colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Black', 'Brown', 'Gray'];
 const tasks = {
   Engineer: ['Fix wiring', 'Calibrate engines'],
   Medic: ['Heal teammate', 'Scan vitals'],
   Pilot: ['Chart course', 'Steer ship'],
+  Biologist: ['Fix crewmate', 'Provide upgrades'],
+  "Lionfish Hunter": ['Hunt', 'Get Water']
 };
 
 function EditCrewmate() {
@@ -47,7 +49,26 @@ function EditCrewmate() {
 
       <p>Pick a color:</p>
       {colors.map(c => (
-        <button type="button" key={c} onClick={() => setColor(c)} style={{ backgroundColor: c.toLowerCase(), color: 'white', margin: '0.25rem', border: color === c ? '2px solid white' : '1px solid gray' }}>{c}</button>
+        <button
+        type="button"
+        key={c}
+        onClick={() => setColor(c)}
+        style={{
+          backgroundColor: c.toLowerCase(),
+          color: 'white',
+          textShadow: '0 0 3px black',
+          margin: '0.25rem',
+          padding: '0.5rem 1rem',
+          borderRadius: '6px',
+          border: color === c ? '3px solid white' : 'none', // ✅ highlight selected
+          cursor: 'pointer',
+          fontWeight: 'bold'
+        }}
+      >
+        {c}
+      </button>
+
+
       ))}
 
       <p>Choose a role:</p>
