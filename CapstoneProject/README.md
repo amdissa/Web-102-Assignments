@@ -69,7 +69,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/amdissa/Web-102-Assignments/blob/main/CapstoneProject/project_8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/amdissa/Web-102-Assignments/blob/main/CapstoneProject/project_8.gif' title='Final Project Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with LiceCap
 
@@ -79,7 +79,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2025] [Amdissa / Nazrin R Mammadsoy]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
