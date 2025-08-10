@@ -70,7 +70,7 @@ Spacing definitely is still tricky to deal with for me. I'm slowly getting used 
 
 ## License
 
-    Copyright [2025] [Amdissa / Nazrin Mammadsoy]
+    Copyright [2025] [Amdissa / Nazrin R Mammadsoy]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
