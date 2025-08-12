@@ -50,10 +50,6 @@ Here's a walkthrough of implemented required features:
 
 GIF created with LiceCap  
 
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
 
@@ -62,7 +58,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2025] [Amdissa / Nazrin Mammadsoy]
+    Copyright [2025] [Amdissa / Nazrin R Mammadsoy]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
