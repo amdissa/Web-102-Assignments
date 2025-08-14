@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 - [✔] **The user can navigate through an ordered list of cardss**
   - A forward/next button displayed on the card navigates to the next card in a set sequence when clicked
   - A previous/back button displayed on the card returns to the previous card in the set sequence when clicked
-  - Both the next and back buttons should have some visual indication that the user is at the beginning or end of the list (for example, graying out and no longer being available to click), not allowing for wrap-around navigation
+  - Both the next and back buttons should have some visual indication that the user is at the beginning or end of the list (for example, graying out and no longer being available to click), not allowing for wrap-around navigation.
 
 The following **optional** features are implemented:
 
